@@ -7,50 +7,35 @@ import { routes } from 'src/constant/routes';
 
 const TopLogo = () => {
   return (
-    <div className={"top"}>
-      <div className={"logo"}>
-        {/* <img src={"./images/logo.png"} alt={""}/> */}
-        <h2>Raspberry<span className={"danger"}> Panel</span></h2>
-      </div>
-      <div className={"close"} id={"close-btn"}>
-        <span className="material-icons-sharp">close</span>
+    <div className="flex items-center justify-between ml-5 mb-2">
+      <div className="flex gap-1">
+        <h2 className="text-2xl pl-2">Raspberry<span className="text-red-500"> Panel</span></h2>
       </div>
     </div>
   )
-}
+};
 
-
-
-const Navbar = () => {
+export const Sidebar = () => {
   const router = useRouter();
 
   return (
-    <div className={"sidebar"}>
+    <aside className="fixed h-screen w-64 bg-white shadow pt-4">
       <TopLogo />
-      {routes.map(route =>
-        <Link
-          href={route.path}
-          key={route.name}
-          className={classNames(
-            "hover:translate-x-2 transition-transform",
-            router.pathname === route.path ? "text-[#7380ec] font-bold" : ""
-          )}
-        >
-          <route.icon className="w-8" />
-          <h3>{route.name}</h3>
-        </Link>)
-      }
-    </div>
-  )
-}
-
-
-const Sidebar = () => {
-  return (
-    <aside>
-      <Navbar />
+      <nav className="flex flex-col gap-1 p-2 h-full">
+        {routes.map(route =>
+          <Link
+            href={route.path}
+            key={route.name}
+            className={classNames(
+              "flex items-center justify-start gap-4 px-3 py-2 hover:translate-x-2 transition-transform",
+              router.pathname === route.path ? "text-[#7380ec] font-bold" : "text-gray-600"
+            )}
+          >
+            <route.icon className="w-7" />
+            <span className="text-base">{route.name}</span>
+          </Link>)
+        }
+      </nav>
     </aside>
   )
-}
-
-export default Sidebar;
+};

@@ -2,6 +2,7 @@ import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { QueryClient, QueryClientProvider} from "react-query";
+import { Sidebar } from "../components/Sidebar";
 
 import "../styles/globals.css";
 
@@ -15,6 +16,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider session={session}>
+        <Sidebar />
         <Component {...pageProps} />
       </SessionProvider>
     </QueryClientProvider>
