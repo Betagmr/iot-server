@@ -12,16 +12,6 @@ type CardGroupProps = {
 };
 
 export const CardGroup = ({ cards }: CardGroupProps) => {
-  const [isOn, setIsOn] = React.useState<boolean[]>(cards.map((card) => card.isOn));
-
-  const setOn = (i: number) => (isOn: boolean) => {
-    setIsOn((prev) => {
-      const next = [...prev];
-      next[i] = isOn;
-      return next;
-    });
-  };
-
   return (
     <div className="flex items-center justify-start gap-2 flex-wrap">
       {cards.map((card, i) => (
@@ -29,8 +19,7 @@ export const CardGroup = ({ cards }: CardGroupProps) => {
           key={i}
           id={card.id}
           name={card.name}
-          isOn={isOn[i] as boolean}
-          setIsOn={setOn(i)}
+          isOn={card.isOn}
         />
       ))}
     </div>

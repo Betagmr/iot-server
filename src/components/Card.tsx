@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { Switch } from '@headlessui/react';
+import { useRaspAtom } from 'src/store/atoms';
 
 type Props = {
   id: string;
   name: string;
   isOn: boolean;
-  setIsOn: (isOn: boolean) => void;
 };
 
 const StateIndicator = ({ isOn }: { isOn: boolean }) => {
@@ -40,7 +40,20 @@ const Toggle = ({ enabled, setEnabled }: ToggleProps) => {
   );
 }
 
-export const Card = ({ id, name, isOn, setIsOn }: Props) => {
+export const Card = ({ id, name, isOn }: Props) => {
+  const [rasp, setRasp] = useRaspAtom();
+
+  const setIsOn = (isOn: boolean) => {
+    const newRasp = rasp.map((r) => {
+      if (r.id === id) {
+        r.isOn = isOn;
+      }
+      return r;
+    });
+
+    setRasp(newRasp);
+  };
+
   return (
     <div className="rounded-lg shadow-md bg-white w-96 h-40 p-4 hover:shadow-2xl transition-shadow">
       <div className="flex flex-col items-center justify-center gap-4 h-full">
