@@ -3,22 +3,12 @@ import Head from "next/head";
 import { useState } from "react";
 import { type Card, CardGroup } from "src/components/CardGroup";
 import { Modal } from "src/components/Modal";
+import { useRaspAtom } from "src/store/atoms";
 
-const cards: Card[] = [
-  {
-    id: "f1dc1ed4-4d36-47fb-b584-b346e3c6223b",
-    name: "Raspberry 1",
-    isOn: true,
-  },
-  {
-    id: "f1dc1ed4-4d36-47fb-b584-b346e3c6223b",
-    name: "Raspberry 1",
-    isOn: true,
-  },
-]
 
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [rasp, setRasp] = useRaspAtom()
 
   return (
     <>
@@ -30,7 +20,7 @@ const Home: NextPage = () => {
 
       <main className="pl-64 bg-neutral-100 h-screen w-screen">
         <div className="p-10">
-          <CardGroup cards={cards} />
+          <CardGroup cards={rasp} />
           <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </main>

@@ -1,9 +1,15 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { AlarmChar } from "src/components/charts/AlarmChar";
+import { HistChart } from "src/components/charts/HistChar";
+import { LineChart } from "src/components/charts/LineChart";
+import { RadarChart } from "src/components/charts/RadarChart";
+import { useRaspAtom } from "src/store/atoms";
 
 
 const Home: NextPage = () => {
+  const [rasp, setRasp] = useRaspAtom();
+  console.log(rasp);
 
   return (
     <>
@@ -14,7 +20,16 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="pl-64 bg-neutral-100 h-screen w-screen">
-        Placeholder
+        <div className="px-10 pt-2 flex flex-col gap-8 justify-center align-middle">
+          <div className="flex gap-8 h-full/2 flex-1">
+            <RadarChart />
+            <LineChart />
+          </div>
+          <div className="flex gap-8 h-full/2 flex-1">
+            <HistChart />
+            <AlarmChar />
+          </div>
+        </div>
       </main>
     </>
   );
