@@ -23,25 +23,23 @@ ChartJS.register(
   Filler
 );
 
-export const LineChart = () => {
+export const LineChart = ({ newData }: any) => {
+
+  const color_list = ['rgb(255, 99, 132)', 'rgb(20, 19, 102)', 'rgb(255, 205, 86)']
+
+  const datasets = newData.map((d: any, i: any) => {
+    return {
+      label: `Rp${i + 1}`,
+      backgroundColor: color_list[i],
+      borderColor: color_list[i],
+      data: d,
+      tension: 0.5,
+    }
+  })
+
   const data = {
     labels: Array(10).fill(''),
-    datasets: [
-      {
-        label: 'RP1',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30],
-        tension: 0.5,
-      },
-      {
-        label: 'Rp2',
-        backgroundColor: 'rgb(20, 19, 102)',
-        borderColor: 'rgb(20, 19, 102)',
-        data: [2, 20, 5, 4, 20, 60],
-        tension: 0.5,
-      },
-    ],
+    datasets
   };
 
   const options = {
@@ -60,7 +58,7 @@ export const LineChart = () => {
 
   return (
     <div className="w-screen h-screen/3">
-      <div className='text-xl'>Grafico de Lineas</div>
+      <div className='text-xl'>Grafico de Intensida de Luz</div>
       <Line data={data} options={options} />
     </div>
   );

@@ -8,5 +8,5 @@ type RaspiRespose = {
 
 export const fetchRaspExist = async (id: string) => {
   const { data } = await axios.get<RaspiRespose[]>("/api/raspberry/" + id);
-  return data ? true : false;
+  return data;
 };

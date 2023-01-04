@@ -23,18 +23,22 @@ ChartJS.register(
   Filler
 );
 
-export const AlarmChar = () => {
+export const AlarmChar = ({ newData }: any) => {
+  const color_list = ['rgb(255, 99, 132)', 'rgb(20, 19, 102)', 'rgb(255, 205, 86)']
+
+  const datasets = newData.map((d: any, i: any) => {
+    return {
+      label: `Rp${i + 1}`,
+      backgroundColor: color_list[i],
+      borderColor: color_list[i],
+      data: d.map((d: any) => (d >= 40) ? 1 : 0),
+      stepped: true,
+    }
+  })
+
   const data = {
     labels: Array(10).fill(''),
-    datasets: [
-      {
-        label: 'RP1',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 1, 1, 0, 1, 0],
-        stepped: true
-      },
-    ],
+    datasets
   };
 
   const options = {

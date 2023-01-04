@@ -1,15 +1,33 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { AlarmChar } from "src/components/charts/AlarmChar";
 import { HistChart } from "src/components/charts/HistChar";
 import { LineChart } from "src/components/charts/LineChart";
 import { RadarChart } from "src/components/charts/RadarChart";
+import { fetchLigthData } from "src/services/ligthservice";
 import { useRaspAtom } from "src/store/atoms";
 
 
 const Home: NextPage = () => {
   const [rasp, setRasp] = useRaspAtom();
-  console.log(rasp);
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchLigthData();
+      setData(data);
+    };
+    fetchData();
+  }, []);
+
+  const newData = rasp.map((rpi) => {
+    return data
+      .filter((d: any) => d.raspberryId === rpi.id)
+      .sort((a: any, b: any) => a.timestamp - b.timestamp)
+      .map((d: any) => d.value);
+  });
+
 
   return (
     <>
@@ -23,11 +41,11 @@ const Home: NextPage = () => {
         <div className="px-10 pt-2 flex flex-col gap-8 justify-center align-middle">
           <div className="flex gap-8 h-full/2 flex-1">
             <RadarChart />
-            <LineChart />
+            <LineChart newData={newData} />
           </div>
           <div className="flex gap-8 h-full/2 flex-1">
             <HistChart />
-            <AlarmChar />
+            <AlarmChar newData={newData} />
           </div>
         </div>
       </main>

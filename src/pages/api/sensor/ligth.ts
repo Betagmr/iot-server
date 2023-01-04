@@ -16,8 +16,8 @@ const ligthMeasures = async (req: NextApiRequest, res: NextApiResponse) => {
         timestamp: new Date(timestamp),
       },
     });
-
     res.status(200).json(measure);
+
   } else if (req.method === "GET") {
     const { raspberryId } = req.body;
     const measures = await prisma.ligthMeasure.findMany(

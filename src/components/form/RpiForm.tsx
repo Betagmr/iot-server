@@ -14,18 +14,15 @@ export const RpiForm = ({ closeModal }: RpiFormProps) => {
   const [name, setName] = React.useState<string>('');
   const [id, setId] = React.useState<string>('');
 
-
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     let exists: boolean = false;
     try {
       const data = await fetchRaspExist(id);
       if (data) exists = true;
     } catch (error) { }
 
-    if (exists) setRasp(rasp.concat({ name, id, isOn: false }));
+    if (exists && name) setRasp(rasp.concat({ name, id, isOn: false }));
     closeModal();
   };
 

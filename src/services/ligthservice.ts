@@ -4,6 +4,7 @@ type LigthResponse = {
   id: string;
   value: number;
   timestamp: Date;
+  raspberryId: string;
 };
 
 export const fetchLigthData = async () => {
