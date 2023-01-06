@@ -78,7 +78,8 @@ model LigthMeasure {
 
 model TemperatureMeasure {
   id          String     @id @default(cuid())
-  value       Int
+  temperature Int
+  humidity    Int
   timestamp   DateTime
   raspberry   Raspberry? @relation(fields: [raspberryId], references: [id])
   raspberryId String?
@@ -94,4 +95,11 @@ model Raspberry {
   alarm       Boolean
   light       LigthMeasure[]
   temp        TemperatureMeasure[]
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  type      String
+  raspberryId String
 }

@@ -25,23 +25,25 @@ ChartJS.register(
   BarElement
 );
 
-export const HistChart = () => {
+export const HistChart = ({ temp, humy }: any) => {
+  console.log(temp, humy)
+
   const data = {
     datasets: [{
       type: 'bar',
-      label: 'Bar Dataset',
-      data: [10, 20, 30, 40],
+      label: 'Tempertaura',
+      data: temp,
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgb(255, 99, 132)',
       borderWidth: 1
     }, {
       type: 'line',
-      label: 'Line Dataset',
-      data: [23, 30, 70, 20],
+      label: 'Humedad',
+      data: humy,
       backgroundColor: 'rgba(54, 162, 235)',
       borderColor: 'rgba(54, 162, 235, 0.7)',
     }],
-    labels: ['January', 'February', 'March', 'April']
+    labels: Array(10).fill('')
   };
 
   const options = {

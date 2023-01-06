@@ -31,7 +31,7 @@ export const AlarmChar = ({ newData }: any) => {
       label: `Rp${i + 1}`,
       backgroundColor: color_list[i],
       borderColor: color_list[i],
-      data: d.map((d: any) => (d >= 40) ? 1 : 0),
+      data: d.map((d: any) => (d <= 40) ? 1 : 0),
       stepped: true,
     }
   })

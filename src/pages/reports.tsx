@@ -1,9 +1,18 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchMessageData } from "src/services/messervice";
 
 
 const Home: NextPage = () => {
+  const [data, setData] = useState<any>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const d = await fetchMessageData();
+      setData(d);
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -14,7 +23,15 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="pl-64 bg-neutral-100 h-screen w-screen">
-        Placeholder
+        <div className="flex flex-col gap-2 pt-5">
+          {data.map((d: any, i: number) =>
+            <div
+              key={i}
+              className={`${(d.type == "Good") ? "bg-green-200" : (d.type === "Advert") ? "bg-orange-200" : "bg-red-200"}  p-4`}>
+              {d.content} de {d.raspberryId}
+            </div>
+          )}
+        </div>
       </main>
     </>
   );

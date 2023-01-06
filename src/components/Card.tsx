@@ -10,7 +10,7 @@ type Props = {
 
 const StateIndicator = ({ isOn }: { isOn: boolean }) => {
   return (
-    <div className={`-mb-1 px-2 py-0.5 text-xs font-semibold rounded-full border ${isOn ? 'bg-green-100 text-green-800 border-green-600' : 'bg-red-100 text-red-800 border-red-600'}`}>
+    <div className={`-mb-1 px-2 py-0.5 text-xs font-semibold rounded-full border ${!isOn ? 'bg-green-100 text-green-800 border-green-600' : 'bg-red-100 text-red-800 border-red-600'}`}>
       {isOn ? 'On' : 'Off'}
     </div>
   );
@@ -69,7 +69,7 @@ export const Card = ({ id, name, isOn }: Props) => {
           <div className="col-span-2 h-full p-2 flex flex-col items-start justify-center">
             <h3 className="font-bold text-2xl">{name}</h3>
             <div className="flex items-center justify-start gap-2">
-              <p className="text-lg">Estado:</p>
+              <p className="text-lg">Alarma:</p>
               <StateIndicator isOn={isOn} />
             </div>
           </div>

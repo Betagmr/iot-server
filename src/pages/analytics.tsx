@@ -6,17 +6,25 @@ import { HistChart } from "src/components/charts/HistChar";
 import { LineChart } from "src/components/charts/LineChart";
 import { RadarChart } from "src/components/charts/RadarChart";
 import { fetchLigthData } from "src/services/ligthservice";
+import { fetchMessageData } from "src/services/messervice";
+import { fetchTempData } from "src/services/tempservice";
 import { useRaspAtom } from "src/store/atoms";
 
 
 const Home: NextPage = () => {
   const [rasp, setRasp] = useRaspAtom();
-  const [data, setData] = useState<any>([]);
+  const [data, setData1] = useState<any>([]);
+  const [data2, setData2] = useState<any>([]);
+  const [data3, setData3] = useState<any>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchLigthData();
-      setData(data);
+      const d1 = await fetchLigthData();
+      const d2 = await fetchTempData();
+      const d3 = await fetchMessageData();
+      setData1(d1);
+      setData2(d2);
+      setData3(d3);
     };
     fetchData();
   }, []);
@@ -27,6 +35,33 @@ const Home: NextPage = () => {
       .sort((a: any, b: any) => a.timestamp - b.timestamp)
       .map((d: any) => d.value);
   });
+
+  const tempData = rasp.map((rpi) => {
+    return data2
+      .filter((d: any) => d.raspberryId === rpi.id)
+      .sort((a: any, b: any) => a.timestamp - b.timestamp)
+      .map((d: any) => d.temperature);
+  });
+
+  const humyData = rasp.map((rpi) => {
+    return data2
+      .filter((d: any) => d.raspberryId === rpi.id)
+      .sort((a: any, b: any) => a.timestamp - b.timestamp)
+      .map((d: any) => d.humidity);
+  });
+
+  const sumData = data3.reduce((acc: any, rpi: any) => {
+    if (rpi.type === "Good") {
+      acc[0] = acc[0] + 1;
+      return acc;
+    } else if (rpi.type === "Advert") {
+      acc[1] = acc[1] + 1;
+      return acc;
+    } else {
+      acc[2] = acc[2] + 1;
+      return acc;
+    }
+  }, [0, 0, 0]);
 
 
   return (
@@ -40,11 +75,11 @@ const Home: NextPage = () => {
       <main className="pl-64 bg-neutral-100 h-screen w-screen">
         <div className="px-10 pt-2 flex flex-col gap-8 justify-center align-middle">
           <div className="flex gap-8 h-full/2 flex-1">
-            <RadarChart />
-            <LineChart newData={newData} />
+            <RadarChart newData={sumData} />
+            <HistChart temp={tempData[0]} humy={humyData[0]} />
           </div>
           <div className="flex gap-8 h-full/2 flex-1">
-            <HistChart />
+            <LineChart newData={newData} />
             <AlarmChar newData={newData} />
           </div>
         </div>
