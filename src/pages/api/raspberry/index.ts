@@ -10,7 +10,7 @@ const raspberrypi = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
 
-    res.status(200).json(measure);
+    res.status(200).json(measure.id);
   } else if (req.method === "GET") {
     const measures = await prisma.raspberry.findMany();
     res.status(200).json(measures);
