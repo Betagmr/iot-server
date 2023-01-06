@@ -3,19 +3,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const raspberrypi = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
-    const {
-      lastUpdate,
-      led,
-      activator,
-      alarm,
-    } = req.body;
 
     const measure = await prisma.raspberry.create({
       data: {
-        lastUpdate: new Date(lastUpdate),
-        led,
-        activator,
-        alarm,
+        activator: false,
       },
     });
 
