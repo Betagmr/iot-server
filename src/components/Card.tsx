@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Switch } from '@headlessui/react';
 import { useRaspAtom } from 'src/store/atoms';
+import { modifyRaspStatus } from 'src/services/raspiservice';
 
 type Props = {
   id: string;
@@ -47,6 +48,7 @@ export const Card = ({ id, name, isOn }: Props) => {
     const newRasp = rasp.map((r) => {
       if (r.id === id) {
         r.isOn = isOn;
+        modifyRaspStatus(r.id, r.isOn);
       }
       return r;
     });
