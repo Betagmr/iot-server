@@ -12,7 +12,8 @@ import {
   Tooltip,
   Legend,
   Filler,
-  BarElement
+  BarElement,
+  registerables
 } from 'chart.js';
 
 ChartJS.register(
@@ -24,7 +25,8 @@ ChartJS.register(
   Tooltip,
   Legend,
   Filler,
-  BarElement
+  BarElement,
+  ...registerables
 );
 
 export const HistChart = ({ temp, humy }: any) => {
