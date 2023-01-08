@@ -16,7 +16,7 @@ export const RpiForm = ({ closeModal }: RpiFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let exists: boolean = false;
+    let exists = false;
     try {
       const data = await fetchRaspExist(id);
       if (data) exists = true;

@@ -1,4 +1,4 @@
-import { prisma } from "../../../server/db/client";;
+import { prisma } from "../../../server/db/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const raspberrypi = async (req: NextApiRequest, res: NextApiResponse) => {
