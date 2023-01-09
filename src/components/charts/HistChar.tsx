@@ -29,25 +29,25 @@ ChartJS.register(
   ...registerables
 );
 
-export const HistChart = ({ temp, humy }: any) => {
+export const HistChart = ({ temp, humy, number }: any) => {
   console.log(temp, humy)
 
   const data = {
     datasets: [{
       type: 'bar',
-      label: 'Tempertaura',
+      label: 'Temperature',
       data: temp,
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgb(255, 99, 132)',
       borderWidth: 1
     }, {
       type: 'line',
-      label: 'Humedad',
+      label: 'Humidity',
       data: humy,
       backgroundColor: 'rgba(54, 162, 235)',
       borderColor: 'rgba(54, 162, 235, 0.7)',
     }],
-    labels: Array(10).fill('')
+    labels: Array(number).fill('')
   };
 
   const options = {
@@ -61,7 +61,7 @@ export const HistChart = ({ temp, humy }: any) => {
 
   return (
     <div className="w-screen h-screen/3">
-      <div className='text-xl'>Grafico Compuesto</div>
+      <div className='text-xl'></div>
       <Chart data={data} options={options} />
     </div>
   );

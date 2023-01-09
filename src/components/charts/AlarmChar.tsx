@@ -23,7 +23,7 @@ ChartJS.register(
   Filler
 );
 
-export const AlarmChar = ({ newData }: any) => {
+export const AlarmChar = ({ newData, number }: any) => {
   const color_list = ['rgb(255, 99, 132)', 'rgb(20, 19, 102)', 'rgb(255, 205, 86)']
 
   const datasets = newData.map((d: any, i: any) => {
@@ -37,7 +37,7 @@ export const AlarmChar = ({ newData }: any) => {
   })
 
   const data = {
-    labels: Array(10).fill(''),
+    labels: Array(number).fill(''),
     datasets
   };
 
@@ -57,7 +57,7 @@ export const AlarmChar = ({ newData }: any) => {
 
   return (
     <div className="w-screen h-screen/3">
-      <div className='text-xl'>Grafico de Activacion</div>
+      <div className='text-xl'>Activation Graph</div>
       <Line data={data} options={options} />
     </div>
   );

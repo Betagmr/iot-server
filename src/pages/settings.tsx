@@ -1,9 +1,13 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
+import { deleteAllMessages } from "src/services/messervice";
+import { Button } from "src/components/Button";
+import { useNumAtom } from "src/store/atoms";
 
 
 const Home: NextPage = () => {
+  const [number, setNumber] = useNumAtom()
 
   return (
     <>
@@ -14,7 +18,32 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="pl-64 bg-neutral-100 h-screen w-screen">
-        Placeholder
+        <div className="p-10 flex flex-col gap-10">
+          <div>
+            <label className="block text-xl font-medium text-gray-700">
+              Time series size of Graph
+            </label>
+            <input
+              type="number"
+              value={String(number)}
+              className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md w-64 text-center"
+              onChange={(e) => {
+                setNumber(Number(e.target.value))
+              }}
+            />
+          </div>
+
+          <div>
+            <Button
+              type="button"
+              onClick={deleteAllMessages}
+              variant="primaryRed"
+              className="">
+              Clear all data
+            </Button>
+          </div>
+
+        </div>
       </main>
     </>
   );

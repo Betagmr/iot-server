@@ -8,7 +8,7 @@ import { RadarChart } from "src/components/charts/RadarChart";
 import { fetchLigthData } from "src/services/ligthservice";
 import { fetchMessageData } from "src/services/messervice";
 import { fetchTempData } from "src/services/tempservice";
-import { useRaspAtom } from "src/store/atoms";
+import { useNumAtom, useRaspAtom } from "src/store/atoms";
 
 
 const Home: NextPage = () => {
@@ -16,6 +16,7 @@ const Home: NextPage = () => {
   const [data, setData1] = useState<any>([]);
   const [data2, setData2] = useState<any>([]);
   const [data3, setData3] = useState<any>([]);
+  const [number] = useNumAtom();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,12 +76,12 @@ const Home: NextPage = () => {
       <main className="pl-64 bg-neutral-100 h-screen w-screen">
         <div className="px-10 pt-2 flex flex-col gap-8 justify-center align-middle">
           <div className="flex gap-8 h-full/2 flex-1">
-            <RadarChart newData={sumData} />
-            <HistChart temp={tempData[0]} humy={humyData[0]} />
+            <RadarChart newData={sumData} number={number} />
+            <HistChart temp={tempData[0]} humy={humyData[0]} number={number} />
           </div>
           <div className="flex gap-8 h-full/2 flex-1">
-            <LineChart newData={newData} />
-            <AlarmChar newData={newData} />
+            <LineChart newData={newData} number={number} />
+            <AlarmChar newData={newData} number={number} />
           </div>
         </div>
       </main>

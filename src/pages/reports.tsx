@@ -28,7 +28,7 @@ const Home: NextPage = () => {
             <div
               key={i}
               className={`${(d.type == "Good") ? "bg-green-200" : (d.type === "Advert") ? "bg-orange-200" : "bg-red-200"}  p-4`}>
-              {d.content} de {d.raspberryId}
+              {d.content} {d.raspberryId}
             </div>
           )}
         </div>

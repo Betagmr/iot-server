@@ -37,7 +37,7 @@ export const RadarChart = ({ newData }: any) => {
       'Error'
     ],
     datasets: [{
-      label: 'My First Dataset',
+      label: 'Message Type Count',
       data: newData,
       backgroundColor: [
         'rgb(54, 162, 10, 0.8)',
@@ -50,7 +50,7 @@ export const RadarChart = ({ newData }: any) => {
 
   return (
     <div className="w-full" >
-      <div className='text-xl'>Tarta de Notificaciones</div>
+      <div className='text-xl'>Pie Notification</div>
       <div className='flex items-center justify-center h-[300px] w-full'>
         <Pie data={data} />
       </div>

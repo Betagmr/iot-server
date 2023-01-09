@@ -16,6 +16,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } else if (req.method === "GET") {
     const data = await prisma.message.findMany();
     res.status(200).json(data);
+
+  } else if (req.method === "DELETE") {
+    await prisma.message.deleteMany();
+    res.status(200).json({ message: "All messages deleted" });
   }
 }
 

@@ -23,7 +23,7 @@ ChartJS.register(
   Filler
 );
 
-export const LineChart = ({ newData }: any) => {
+export const LineChart = ({ newData, number }: any) => {
 
   const color_list = ['rgb(255, 99, 132)', 'rgb(20, 19, 102)', 'rgb(255, 205, 86)']
 
@@ -38,7 +38,7 @@ export const LineChart = ({ newData }: any) => {
   })
 
   const data = {
-    labels: Array(10).fill(''),
+    labels: Array(number).fill(''),
     datasets
   };
 
@@ -58,7 +58,7 @@ export const LineChart = ({ newData }: any) => {
 
   return (
     <div className="w-screen h-screen/3">
-      <div className='text-xl'>Grafico de Intensida de Luz</div>
+      <div className='text-xl'>Ligth Intensity Graph</div>
       <Line data={data} options={options} />
     </div>
   );
