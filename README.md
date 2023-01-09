@@ -1,28 +1,43 @@
-# Create T3 App
+# Dashboard de control de Raspberry Pi
+Este es un proyecto de aplicación web que permite monitorizar y controlar la Raspberry Pi de forma cómoda y sencilla a través de un dashboard online.
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Carecterísticas
+- Monitorización en tiempo real de los sensores de la Raspberry Pi
+- Gráficos y estadísticas de uso de los sensores
+- Configuración del tamaño de los graficos 
+- Sistema de logs para el dasbhoard
 
-## What's next? How do I make an app with this?
-
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
+## Tecnologías
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
 
-## Learn More
+## Prerrequisitos
+- Node.js
+- Una Raspberry Pi
+- La Raspberry tiene que tener instalado el siguiente [codigo](https://github.com/Delapee/iot_rpi)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Link del despliegue de la web
+Web hosteada en vercel
+https://iot-server-nine.vercel.app/
+## Instalación y uso
+Para ejecutar esta aplicación, necesitarás tener instalado Node.js y acceder a tu Raspberry Pi a través de una conexión SSH. Sigue estos pasos para instalar y utilizar el dashboard:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+1. Clona este repositorio en tu pc:
+```
+git clone https://github.com/mi-usuario/mi-proyecto.git
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+2. Accede al directorio del proyecto y instala las dependencias necesarias
+```
+cd mi-proyecto
+npm install
+```
 
-## How do I deploy this?
+3. Ejecuta el servidor de desarrollo
+```
+npm run dev
+```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+4. Abre tu navegador web y accede a la dirección http://localhost:3000 para acceder al dashboard. 
