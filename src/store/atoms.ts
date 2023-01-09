@@ -9,7 +9,7 @@ type RaspAtom = {
 
 
 const raspAtom = atom<RaspAtom[]>([]);
-const numAtom = atom<Number>(10);
+const numAtom = atom<number>(10);
 
 
 export const useRaspAtom = () => {
