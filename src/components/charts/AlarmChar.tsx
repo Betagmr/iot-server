@@ -24,7 +24,7 @@ ChartJS.register(
 );
 
 export const AlarmChar = ({ newData, number }: any) => {
-  const color_list = ['rgb(255, 99, 132)', 'rgb(20, 19, 102)', 'rgb(255, 205, 86)']
+  const color_list = ['rgb(255, 99, 132)', 'rgb(20, 19, 102)', 'rgb(255, 205, 86)', 'rgb(90, 255, 120)', 'rgb(90, 119, 255)']
 
   const datasets = newData.map((d: any, i: any) => {
     return {

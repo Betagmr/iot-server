@@ -71,7 +71,7 @@ export const Card = ({ id, name, isOn }: Props) => {
           <div className="col-span-2 h-full p-2 flex flex-col items-start justify-center">
             <h3 className="font-bold text-2xl">{name}</h3>
             <div className="flex items-center justify-start gap-2">
-              <p className="text-lg">Alarma:</p>
+              <p className="text-lg">Irrigation:</p>
               <StateIndicator isOn={isOn} />
             </div>
           </div>
