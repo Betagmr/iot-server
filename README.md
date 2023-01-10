@@ -12,6 +12,7 @@ Este es un proyecto de aplicación web que permite monitorizar y controlar la Ra
 - [NextAuth.js](https://next-auth.js.org)
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
+- [Prisma DB](https://www.prisma.io/)
 
 ## Prerrequisitos
 - Node.js
@@ -21,6 +22,7 @@ Este es un proyecto de aplicación web que permite monitorizar y controlar la Ra
 ## Link del despliegue de la web
 Web hosteada en vercel
 https://iot-server-nine.vercel.app/
+
 ## Instalación y uso
 Para ejecutar esta aplicación, necesitarás tener instalado Node.js y acceder a tu Raspberry Pi a través de una conexión SSH. Sigue estos pasos para instalar y utilizar el dashboard:
 
@@ -41,3 +43,11 @@ npm run dev
 ```
 
 4. Abre tu navegador web y accede a la dirección http://localhost:3000 para acceder al dashboard. 
+
+
+## Rutas de la Api
+- `api/raspberry`
+- `api/raspberry/id`
+- `api/sensor/ligth`
+- `api/sensor/temperature`
+- `api/sensor/message`
